@@ -1,0 +1,51 @@
+<html lang="EN" ng-app="winesModule">
+<head>
+	<meta charset="UTF-8">
+	<title>Wine Cellar</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	
+	<script type="text/javascript" src="module/app.js"></script>
+	<script type="text/javascript" src="controllers/WinesController.js"></script>
+	<script type="text/javascript" src="controllers/mainController.js"></script>
+	<script type="text/javascript" src="controllers/AddWineController.js"></script>
+	<script type="text/javascript" src="services/winesHttpService.js"></script>
+	
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+
+
+</head>
+<body ng-controller="mainController">
+	<style type="text/css">
+		
+		.affix{
+			width: 100%;
+			z-index: 9999;
+			top:0;
+		}
+		.affix + .container{
+			padding-top: 70px;
+		}
+
+	</style>
+	<div ng-include="'html/Header.html'"></div>
+	<div data-spy="affix" data-offset-top="280">
+		<div ng-include="'html/Navbar.html'"></div>
+	</div>
+	<div ng-show="pageControl.wineTablePage">
+		<div ng-include="'html/LoremIpsum.html'"></div>
+		<div ng-controller = "WinesController">
+			<div ng-include="'html/SearchForm.html'"></div>
+			<div class="row">
+				<div class="col-sm-8" ng-include="'html/Table.html'"></div>
+				<div class="col-sm-4" ng-include="'html/Carousel.html'"></div>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="pageControl.wineTablePage">
+		<div ng-include="'html/addWine.html'"></div>
+	</div>
+</body>
+</html>

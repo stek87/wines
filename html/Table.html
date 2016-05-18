@@ -1,0 +1,38 @@
+<table class="table table-striped">
+  <thead>
+    <th width="300">
+      Name
+      <a href="#" ng-click="setSortCriteria('name')"><span class="glyphicon glyphicon-sort"></span></a>
+    </th>
+    <th>
+      Year
+      <a href="#" ng-click="setSortCriteria('year')"><span class="glyphicon glyphicon-sort"></span></a>
+    </th>
+    <th>
+      Grapes 
+      <a href="#" ng-click="setSortCriteria('grapes')"><span class="glyphicon glyphicon-sort"></span></a>                
+    </th>
+    <th>
+      Country 
+      <a href="#" ng-click="setSortCriteria('country')"><span class="glyphicon glyphicon-sort"></span></a>
+    </th>
+    <th>
+      Region 
+      <a href="#" ng-click="setSortCriteria('region')"><span class="glyphicon glyphicon-sort"></span></a>                
+    </th>
+  </thead>
+  <tbody ng-repeat="wine in wines | orderBy: sortDirection + sortCriteria | filter: searchCriteria | limitTo: pageSize : activePage*pageSize">
+    <td>{{wine.name}}</td>
+    <td>{{wine.year}}</td>
+    <td>{{wine.grapes}}</td>
+    <td>{{wine.country}}</td>
+    <td>{{wine.region}}</td>
+    <td><button ng-click="removeWine(wine)"><span class="glyphicon glyphicon-remove"></button></td>
+    <td><button ng-click="updateWine(wine)"><span class="glyphicon glyphicon-edit"></button></td>
+  </tbody>
+</table>
+<div class="text-center" >
+  <ul class="pagination">
+    <li ng-class="{'active': i == (activePage+1)}" ng-repeat="i in pagArray"><span ng-click="changePage(i)">{{i}}</span></li>
+  </ul>
+</div>
